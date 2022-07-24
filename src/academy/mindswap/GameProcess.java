@@ -40,11 +40,11 @@ public class GameProcess {
          if( obstacle instanceof Defendeable){
              System.out.printf("A witch as appeared!");
              player.defend(obstacle.attack());
-             if(gameEnded(player,opponent)){
+             if(gameEnded1(player,opponent)){
                  return;
              }
              opponent.defend(obstacle.attack());
-             if(gameEnded(player,opponent)){
+             if(gameEnded1(player,opponent)){
                  return;
              }
              ((Defendeable) obstacle).defend(player.playerAttacks());
@@ -104,6 +104,16 @@ public class GameProcess {
         }
         if(opponent.getDeadCards() == numberOfCards){
             System.out.printf("%s has won!\n", player.getName());
+            return true;
+        }
+        return false;
+    }
+    public boolean gameEnded1(Player player, Player opponent){
+
+        if(player.getDeadCards() == numberOfCards){
+            return true;
+        }
+        if(opponent.getDeadCards() == numberOfCards){
             return true;
         }
         return false;
